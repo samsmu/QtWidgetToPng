@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     QCoreApplication::translate("main", "font"));
   parser.addOption(fontOption);*/
 
-  QCommandLineOption fontSizeOption(QStringList() << "fs" << "font size",
+  QCommandLineOption fontSizeOption(QStringList() << "s" << "font size",
     QCoreApplication::translate("main", "Set font size to use."),
     QCoreApplication::translate("main", "font size"));
   parser.addOption(fontSizeOption);
