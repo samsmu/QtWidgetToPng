@@ -41,6 +41,15 @@ int main(int argc, char** argv)
     QCoreApplication::translate("main", "Output file name"));
   parser.addOption(fileNameOption);
 
+  QCommandLineOption checkedOption(QStringList() << "checked",
+    QCoreApplication::translate("main", "Set toolbutton to checked state"));
+  parser.addOption(checkedOption);
+  
+  QCommandLineOption iconOption(QStringList() << "i" << "icon",
+    QCoreApplication::translate("main", "Set toolbutton icon to use."),
+    QCoreApplication::translate("main", "Set toolbutton icon"));
+  parser.addOption(iconOption);
+
   // Process the actual command line arguments given by the user
   parser.process(app);
 
@@ -51,6 +60,8 @@ int main(int argc, char** argv)
   //params.font = parser.value(fontOption);
   params.fontSize = parser.value(fontSizeOption);
   params.fileName = parser.value(fileNameOption);
+  params.checked = parser.isSet(checkedOption);
+  params.iconPath = parser.value(iconOption);
 
   themes_generator themes_generator(params);
   themes_generator.show();

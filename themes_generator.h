@@ -9,6 +9,8 @@ struct GeneratorParams
   QString font;
   QString fontSize;
   QString fileName;
+  bool checked;
+  QString iconPath;
 };
 
 class themes_generator : public QWidget
