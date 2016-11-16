@@ -50,6 +50,15 @@ int main(int argc, char** argv)
     QCoreApplication::translate("main", "Set toolbutton icon"));
   parser.addOption(iconOption);
 
+  QCommandLineOption sizeOption(QStringList() << "size" << "size",
+    QCoreApplication::translate("main", "Set toolbutton size to use."),
+    QCoreApplication::translate("main", "Set toolbutton size"));
+  parser.addOption(sizeOption);
+  
+  QCommandLineOption caseOption(QStringList() << "case",
+    QCoreApplication::translate("main", "Set case style"));
+  parser.addOption(caseOption);
+  
   // Process the actual command line arguments given by the user
   parser.process(app);
 
@@ -62,6 +71,8 @@ int main(int argc, char** argv)
   params.fileName = parser.value(fileNameOption);
   params.checked = parser.isSet(checkedOption);
   params.iconPath = parser.value(iconOption);
+  params.size = parser.value(sizeOption).toInt();
+  params.autoplanCase = parser.isSet(caseOption);
 
   themes_generator themes_generator(params);
   themes_generator.show();

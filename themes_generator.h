@@ -11,6 +11,8 @@ struct GeneratorParams
   QString fileName;
   bool checked;
   QString iconPath;
+  int size;
+  bool autoplanCase;
 };
 
 class themes_generator : public QWidget

@@ -11,7 +11,7 @@ find_package(Qt5Gui)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS} ${Qt5Gui_INCLUDE_DIRS} ${CMAKE_CURRENT_BINARY_DIR})
 
-set(themes_generator_SRCS themes_generator.cpp main.cpp)
+set(themes_generator_SRCS themes_generator.cpp main.cpp QArrowTabBar.cpp)
 
 add_executable(themes_generator ${themes_generator_SRCS})
 

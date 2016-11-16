@@ -3,6 +3,8 @@
 #include <QToolButton>
 #include <QLabel>
 
+#include "QArrowTabBar.h"
+
 #include <QDebug>
 
 #include "themes_generator.h"
@@ -41,6 +43,18 @@ themes_generator::themes_generator(const GeneratorParams& params) : QWidget()
   {
     QToolButton* testButton = new QToolButton(this);
     testButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    if (!m_params.checked)
+    {
+      testButton->setStyleSheet("border:none;");
+    }
+    
+    if (params.size > 0)
+    {
+      testButton->setFixedHeight(params.size);
+      testButton->setFixedWidth(params.size);
+      testButton->setIconSize(QSize(params.size, params.size));
+    }
+    
     if (!m_params.iconPath.isEmpty())
     {
       testButton->setIcon(QIcon(m_params.iconPath));
@@ -54,6 +68,15 @@ themes_generator::themes_generator(const GeneratorParams& params) : QWidget()
     }
     
     m_testWidget = qobject_cast<QWidget*>(testButton);
+  }
+  else if (m_params.control == "arrowtabbar")
+  {
+    QArrowTabBar* testTabBar = new QArrowTabBar(this);
+    testTabBar->addTab("Test 1");
+    auto tabIndex = testTabBar->addTab(!m_params.text.isEmpty() ? m_params.text : "");
+    testTabBar->setTabEnabled(tabIndex, true);
+    
+    m_testWidget = qobject_cast<QWidget*>(testTabBar);
   }
   
   if (!m_params.fontSize.isEmpty())
@@ -78,12 +101,21 @@ void themes_generator::generate()
   QPixmap pixmap(m_testWidget->size());
   m_testWidget->render(&pixmap);
   
-  if (m_params.control == "button" || m_params.control == "toolbutton")
+  if ((m_params.control == "button") || (m_params.control == "toolbutton" && !m_params.autoplanCase && m_params.checked))
   {
     QRect rect = pixmap.rect();
     rect.setLeft(rect.left() + 10);
     rect.setRight(rect.right() - 10);
     
+    pixmap = pixmap.copy(rect);
+  }
+  
+  if (m_params.control == "arrowtabbar")
+  {
+    QRect rect = pixmap.rect();
+    rect.setLeft(rect.left() + rect.width() / 2 + 20);
+    rect.setRight(rect.right() - 20);
+
     pixmap = pixmap.copy(rect);
   }
 
