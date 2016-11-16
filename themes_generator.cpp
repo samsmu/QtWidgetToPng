@@ -73,8 +73,13 @@ themes_generator::themes_generator(const GeneratorParams& params) : QWidget()
   {
     QArrowTabBar* testTabBar = new QArrowTabBar(this);
     testTabBar->addTab("Test 1");
-    auto tabIndex = testTabBar->addTab(!m_params.text.isEmpty() ? m_params.text : "");
+    int tabIndex = testTabBar->addTab(!m_params.text.isEmpty() ? m_params.text : "");
     testTabBar->setTabEnabled(tabIndex, true);
+    
+    if (params.tabActive)
+    {
+      testTabBar->setCurrentIndex(tabIndex);
+    }
     
     m_testWidget = qobject_cast<QWidget*>(testTabBar);
   }

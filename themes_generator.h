@@ -13,6 +13,7 @@ struct GeneratorParams
   QString iconPath;
   int size;
   bool autoplanCase;
+  bool tabActive;
 };
 
 class themes_generator : public QWidget

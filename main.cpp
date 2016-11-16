@@ -59,6 +59,10 @@ int main(int argc, char** argv)
     QCoreApplication::translate("main", "Set case style"));
   parser.addOption(caseOption);
   
+  QCommandLineOption tabActiveOption(QStringList() << "tab_active",
+    QCoreApplication::translate("main", "Set tab to active state"));
+  parser.addOption(tabActiveOption);
+  
   // Process the actual command line arguments given by the user
   parser.process(app);
 
@@ -73,6 +77,7 @@ int main(int argc, char** argv)
   params.iconPath = parser.value(iconOption);
   params.size = parser.value(sizeOption).toInt();
   params.autoplanCase = parser.isSet(caseOption);
+  params.tabActive = parser.isSet(tabActiveOption);
 
   themes_generator themes_generator(params);
   themes_generator.show();
