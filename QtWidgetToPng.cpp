@@ -90,6 +90,7 @@ QtWidgetToPng::QtWidgetToPng(const GeneratorParams& params) : QWidget()
     font.setPixelSize(m_params.fontSize.toInt());
     m_testWidget->setFont(font);
   }
+  if (m_params.disabled) m_testWidget->setDisabled(true);
 }
 
 QtWidgetToPng::~QtWidgetToPng()
@@ -114,7 +115,7 @@ void QtWidgetToPng::generate()
     
     pixmap = pixmap.copy(rect);
   }
-  
+    
   if (m_params.control == "arrowtabbar")
   {
     QRect rect = pixmap.rect();

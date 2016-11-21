@@ -58,6 +58,10 @@ int main(int argc, char** argv)
   QCommandLineOption caseOption(QStringList() << "case",
     QCoreApplication::translate("main", "Set case style"));
   parser.addOption(caseOption);
+
+  QCommandLineOption disabledOption(QStringList() << "disabled",
+    QCoreApplication::translate("main", "Make generated widget to be disabled"));
+  parser.addOption(disabledOption);
   
   QCommandLineOption tabActiveOption(QStringList() << "tab_active",
     QCoreApplication::translate("main", "Set tab to active state"));
@@ -68,16 +72,17 @@ int main(int argc, char** argv)
 
   GeneratorParams params;
 
-  params.control = parser.value(controlOption);
-  params.text = parser.value(textOption);
-  //params.font = parser.value(fontOption);
-  params.fontSize = parser.value(fontSizeOption);
-  params.fileName = parser.value(fileNameOption);
-  params.checked = parser.isSet(checkedOption);
-  params.iconPath = parser.value(iconOption);
-  params.size = parser.value(sizeOption).toInt();
+  params.control      = parser.value(controlOption);
+  params.text         = parser.value(textOption);
+  //params.font       = parser.value(fontOption);
+  params.fontSize     = parser.value(fontSizeOption);
+  params.fileName     = parser.value(fileNameOption);
+  params.checked      = parser.isSet(checkedOption);
+  params.iconPath     = parser.value(iconOption);
+  params.size         = parser.value(sizeOption).toInt();
   params.autoplanCase = parser.isSet(caseOption);
-  params.tabActive = parser.isSet(tabActiveOption);
+  params.disabled     = parser.isSet(disabledOption);
+  params.tabActive    = parser.isSet(tabActiveOption);
 
   QtWidgetToPng qtWidgetToPng(params);
   qtWidgetToPng.show();

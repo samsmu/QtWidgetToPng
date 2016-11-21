@@ -13,6 +13,7 @@ struct GeneratorParams
   QString iconPath;
   int size;
   bool autoplanCase;
+  bool disabled;
   bool tabActive;
 };
 
