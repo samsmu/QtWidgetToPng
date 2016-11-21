@@ -7,9 +7,9 @@
 
 #include <QDebug>
 
-#include "themes_generator.h"
+#include "QtWidgetToPng.h"
 
-themes_generator::themes_generator(const GeneratorParams& params) : QWidget()
+QtWidgetToPng::QtWidgetToPng(const GeneratorParams& params) : QWidget()
 {
   m_testWidget = nullptr;
   setMinimumSize(640, 480);
@@ -92,11 +92,11 @@ themes_generator::themes_generator(const GeneratorParams& params) : QWidget()
   }
 }
 
-themes_generator::~themes_generator()
+QtWidgetToPng::~QtWidgetToPng()
 {
 }
 
-void themes_generator::generate()
+void QtWidgetToPng::generate()
 {
   if (m_testWidget == nullptr)
   {
@@ -133,4 +133,4 @@ void themes_generator::generate()
   close();
 }
 
-#include "themes_generator.moc"
+#include "QtWidgetToPng.moc"

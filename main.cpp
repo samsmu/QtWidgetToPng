@@ -2,17 +2,17 @@
 #include <QCommandLineParser>
 #include <QDebug>
 
-#include "themes_generator.h"
+#include "QtWidgetToPng.h"
 
 int main(int argc, char** argv)
 {
   QApplication app(argc, argv);
 
-  app.setApplicationName("themes_generator");
+  app.setApplicationName("QtWidgetToPng");
   app.setApplicationVersion("1.0");
 
   QCommandLineParser parser;
-  parser.setApplicationDescription("themes_generator");
+  parser.setApplicationDescription("QtWidgetToPng");
   parser.addHelpOption();
   parser.addVersionOption();
 
@@ -79,10 +79,10 @@ int main(int argc, char** argv)
   params.autoplanCase = parser.isSet(caseOption);
   params.tabActive = parser.isSet(tabActiveOption);
 
-  themes_generator themes_generator(params);
-  themes_generator.show();
+  QtWidgetToPng qtWidgetToPng(params);
+  qtWidgetToPng.show();
 
-  themes_generator.generate();
+  qtWidgetToPng.generate();
 
   return 0;
 }

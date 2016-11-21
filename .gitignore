@@ -27,3 +27,9 @@
 *.exe
 *.out
 *.app
+
+# Default target directory
+/build
+
+# CMake user files
+*.user

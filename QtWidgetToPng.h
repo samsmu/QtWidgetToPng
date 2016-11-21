@@ -16,13 +16,13 @@ struct GeneratorParams
   bool tabActive;
 };
 
-class themes_generator : public QWidget
+class QtWidgetToPng : public QWidget
 {
   Q_OBJECT
 
 public:
-  themes_generator(const GeneratorParams& params);
-  virtual ~themes_generator();
+  QtWidgetToPng(const GeneratorParams& params);
+  virtual ~QtWidgetToPng();
 
   void generate();
   
