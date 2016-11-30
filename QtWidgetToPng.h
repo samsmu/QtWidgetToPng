@@ -9,9 +9,9 @@ struct GeneratorParams
   QString font;
   QString fontSize;
   QString fileName;
-  bool checked;
   QString iconPath;
   int size;
+  bool checked;
   bool autoplanCase;
   bool disabled;
   bool tabActive;
@@ -26,7 +26,7 @@ public:
   virtual ~QtWidgetToPng();
 
   void generate();
-  
+
 private:
 
   GeneratorParams m_params;

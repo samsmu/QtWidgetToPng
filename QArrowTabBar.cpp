@@ -1,3 +1,5 @@
+// This is an open source non-commercial project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <QDir>
 #include <QPixmap>
 #include <QPainter>
@@ -22,7 +24,7 @@ QArrowTabBar::QArrowTabBar(QWidget* parent) :
   }
 }
 
-void QArrowTabBar::drawPreviousTabPart(QPainter* painter, QColor previousTabColor)
+void QArrowTabBar::drawPreviousTabPart(QPainter* painter, const QColor &previousTabColor)
 {
   painter->setPen(QPen(previousTabColor));
   int leftTopStartY = borderImageHalfHeight - borderImageHalfWidth + 1;
@@ -35,7 +37,7 @@ void QArrowTabBar::drawPreviousTabPart(QPainter* painter, QColor previousTabColo
   }
 }
 
-void QArrowTabBar::drawNextTabPart(QPainter* painter, QColor nextTabColor)
+void QArrowTabBar::drawNextTabPart(QPainter* painter, const QColor &nextTabColor)
 {
   painter->setPen(QPen(nextTabColor));
   int rightEndY = borderImageHeight - borderImageHalfWidth;
@@ -45,7 +47,7 @@ void QArrowTabBar::drawNextTabPart(QPainter* painter, QColor nextTabColor)
   }
 }
 
-void QArrowTabBar::drawTabLeftBorder(QPainter* painter, QColor backgroundColor)
+void QArrowTabBar::drawTabLeftBorder(QPainter* painter, const QColor &backgroundColor)
 {
   // Setting pen width does not work in our case because pen join style is not flexible enought
   // to achieve sharp 90 degree corners. We have to draw border line-by-line to achieve that.
@@ -60,7 +62,7 @@ void QArrowTabBar::drawTabLeftBorder(QPainter* painter, QColor backgroundColor)
   }
 }
 
-void QArrowTabBar::drawTabRightBorder(QPainter* painter, QColor borderColor)
+void QArrowTabBar::drawTabRightBorder(QPainter* painter, const QColor &borderColor)
 {
   painter->setPen(QPen(borderColor));
   int rightEndY = borderImageHeight - borderImageHalfWidth;
@@ -70,7 +72,7 @@ void QArrowTabBar::drawTabRightBorder(QPainter* painter, QColor borderColor)
   }
 }
 
-void QArrowTabBar::drawLastTabRightBorder(QPainter* painter, QColor borderColor)
+void QArrowTabBar::drawLastTabRightBorder(QPainter* painter, const QColor &borderColor)
 {
   painter->setPen(QPen(borderColor));
   int endY = borderImageHeight - borderImageHalfHeight;
@@ -80,7 +82,11 @@ void QArrowTabBar::drawLastTabRightBorder(QPainter* painter, QColor borderColor)
   }
 }
 
-QString QArrowTabBar::getBorderImageFilename(QString imageName, QColor previousTabColor, QColor nextTabColor, QColor borderColor)
+QString QArrowTabBar::getBorderImageFilename
+  ( QString imageName
+  , const QColor &previousTabColor
+  , const QColor &nextTabColor
+  , const QColor &borderColor)
 {
   QPixmap pixmap(borderImageWidth, borderImageHeight);
   pixmap.fill(Qt::transparent);
@@ -96,7 +102,7 @@ QString QArrowTabBar::getBorderImageFilename(QString imageName, QColor previousT
   return imageFileName;
 }
 
-QString QArrowTabBar::getLastTabBorderImageFilename(QString imageName, QColor previousTabColor, QColor borderColor)
+QString QArrowTabBar::getLastTabBorderImageFilename(QString imageName, const QColor &previousTabColor, const QColor &borderColor)
 {
   QPixmap pixmap(lastBorderImageWidth, borderImageHeight);
   pixmap.fill(Qt::transparent);

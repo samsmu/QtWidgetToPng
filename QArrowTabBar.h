@@ -16,13 +16,17 @@ class QArrowTabBar : public QTabBar
   int lastBorderImageWidth;
   QTemporaryDir tempDirectory; // QTemporaryDir will automatically remove the directory during destruction
   QString imagesDirectory;
-  void drawPreviousTabPart(QPainter* painter, QColor previousTabColorName);
-  void drawNextTabPart(QPainter* painter, QColor nextTabColorName);
-  void drawTabLeftBorder(QPainter* painter, QColor borderColor);
-  void drawTabRightBorder(QPainter* painter, QColor borderColor);
-  void drawLastTabRightBorder(QPainter* painter, QColor borderColor);
-  QString getBorderImageFilename(QString imageFileName, QColor previousTabColor, QColor nextTabColor, QColor borderColor);
-  QString getLastTabBorderImageFilename(QString imageName, QColor previousTabColor, QColor borderColor);
+  void drawPreviousTabPart(QPainter* painter, const QColor &previousTabColor);
+  void drawNextTabPart(QPainter* painter, const QColor &nextTabColor);
+  void drawTabLeftBorder(QPainter* painter, const QColor &backgroundColor);
+  void drawTabRightBorder(QPainter* painter, const QColor &borderColor);
+  void drawLastTabRightBorder(QPainter* painter, const QColor &borderColor);
+  QString getBorderImageFilename
+    ( QString imageName
+    , const QColor &previousTabColor
+    , const QColor &nextTabColor
+    , const QColor &borderColor);
+  QString getLastTabBorderImageFilename(QString imageName, const QColor &previousTabColor, const QColor &borderColor);
   void initStyleSheetImages();
 public:
   explicit QArrowTabBar(QWidget *parent = 0);
