@@ -1,5 +1,3 @@
-// This is an open source non-commercial project. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <QBuffer>
 #include <QPushButton>
 #include <QToolButton>
@@ -22,7 +20,7 @@ QtWidgetToPng::QtWidgetToPng(const GeneratorParams& params) : QWidget()
   {
     QPushButton* testButton = new QPushButton(this);
     testButton->setStyleSheet("border:none;");
-    
+
     if (!m_params.text.isEmpty())
     {
       testButton->setText(m_params.text);
@@ -49,26 +47,26 @@ QtWidgetToPng::QtWidgetToPng(const GeneratorParams& params) : QWidget()
     {
       testButton->setStyleSheet("border:none;");
     }
-    
+
     if (params.size > 0)
     {
       testButton->setFixedHeight(params.size);
       testButton->setFixedWidth(params.size);
       testButton->setIconSize(QSize(params.size, params.size));
     }
-    
+
     if (!m_params.iconPath.isEmpty())
     {
       testButton->setIcon(QIcon(m_params.iconPath));
     }
     testButton->setCheckable(true);
     testButton->setChecked(m_params.checked);
-    
+
     if (!m_params.text.isEmpty())
     {
       testButton->setText(m_params.text);
     }
-    
+
     m_testWidget = qobject_cast<QWidget*>(testButton);
   }
   else if (m_params.control == "arrowtabbar")
@@ -77,15 +75,15 @@ QtWidgetToPng::QtWidgetToPng(const GeneratorParams& params) : QWidget()
     testTabBar->addTab("Test 1");
     int tabIndex = testTabBar->addTab(!m_params.text.isEmpty() ? m_params.text : "");
     testTabBar->setTabEnabled(tabIndex, true);
-    
+
     if (params.tabActive)
     {
       testTabBar->setCurrentIndex(tabIndex);
     }
-    
+
     m_testWidget = qobject_cast<QWidget*>(testTabBar);
   }
-  
+
   if (!m_params.fontSize.isEmpty())
   {
     QFont font = m_testWidget->font();
@@ -108,16 +106,16 @@ void QtWidgetToPng::generate()
 
   QPixmap pixmap(m_testWidget->size());
   m_testWidget->render(&pixmap);
-  
+
   if ((m_params.control == "button") || (m_params.control == "toolbutton" && !m_params.autoplanCase && m_params.checked))
   {
     QRect rect = pixmap.rect();
     rect.setLeft(rect.left() + 10);
     rect.setRight(rect.right() - 10);
-    
+
     pixmap = pixmap.copy(rect);
   }
-    
+
   if (m_params.control == "arrowtabbar")
   {
     QRect rect = pixmap.rect();

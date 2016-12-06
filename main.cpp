@@ -1,5 +1,3 @@
-// This is an open source non-commercial project. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
@@ -46,7 +44,7 @@ int main(int argc, char** argv)
   QCommandLineOption checkedOption(QStringList() << "checked",
     QCoreApplication::translate("main", "Set toolbutton to checked state"));
   parser.addOption(checkedOption);
-  
+
   QCommandLineOption iconOption(QStringList() << "i" << "icon",
     QCoreApplication::translate("main", "Set toolbutton icon to use."),
     QCoreApplication::translate("main", "Set toolbutton icon"));
@@ -56,7 +54,7 @@ int main(int argc, char** argv)
     QCoreApplication::translate("main", "Set toolbutton size to use."),
     QCoreApplication::translate("main", "Set toolbutton size"));
   parser.addOption(sizeOption);
-  
+
   QCommandLineOption caseOption(QStringList() << "case",
     QCoreApplication::translate("main", "Set case style"));
   parser.addOption(caseOption);
@@ -64,11 +62,11 @@ int main(int argc, char** argv)
   QCommandLineOption disabledOption(QStringList() << "disabled",
     QCoreApplication::translate("main", "Make generated widget to be disabled"));
   parser.addOption(disabledOption);
-  
+
   QCommandLineOption tabActiveOption(QStringList() << "tab_active",
     QCoreApplication::translate("main", "Set tab to active state"));
   parser.addOption(tabActiveOption);
-  
+
   // Process the actual command line arguments given by the user
   parser.process(app);
 
